@@ -1,4 +1,4 @@
-from .base import env
+from .base import *
 
 DATABASES = {
     'default': {
