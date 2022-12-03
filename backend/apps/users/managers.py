@@ -27,4 +27,49 @@ class CustomUserManager(BaseUserManager):
             self.email_validator(email)
 
         else:
-            raise ValueError(_(''))
+            raise ValueError(_('An email address is required'))
+
+        user = self.model(
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            **extra_fields
+        )
+
+        user.set_password(password)
+        extra_fields.setdefault("is_staff", False)
+        extra_fields.setdefault("is_superuser", False)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, username, first_name, last_name, email, password, **extra_fields):
+        extra_fields.setdefault("is_staff", True)
+        extra_fields.setdefault("is_superuser", True)
+        extra_fields.setdefault("is_active", True)
+
+        if extra_fields.get("is_staff") is not True:
+            raise ValueError(_("Superusers must have is_staff=Treu"))
+
+        if extra_fields.get("is_superuser") is not True:
+            raise ValueError(_("Superusers must have is_superuser=Treu"))
+
+        if not password:
+            raise ValueError(_("Superusers must have a password"))
+
+        if email:
+            email = self.normalize_email(email)
+            self.email_validator(email)
+
+        else:
+            raise ValueError(_('An email address is required'))
+
+        user = self.create_user(
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            **extra_fields
+        )
+        user.save(using=self._db)
+        return user
