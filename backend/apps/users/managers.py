@@ -65,10 +65,11 @@ class CustomUserManager(BaseUserManager):
             raise ValueError(_('An email address is required'))
 
         user = self.create_user(
-            username=username,
-            first_name=first_name,
-            last_name=last_name,
-            email=email,
+            username,
+            first_name,
+            last_name,
+            email,
+            password,
             **extra_fields
         )
         user.save(using=self._db)
