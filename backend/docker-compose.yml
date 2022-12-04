@@ -16,7 +16,6 @@ services:
       - .env
     depends_on:
       - postgres-db
-      - redis
     networks:
       - estate-react
 
