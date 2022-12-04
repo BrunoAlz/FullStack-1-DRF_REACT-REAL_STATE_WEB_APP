@@ -1,3 +1,4 @@
+from datetime import timedelta
 from django.utils.log import DEFAULT_LOGGING
 import logging.config
 import logging
@@ -34,6 +35,8 @@ THIRD_PARTY_APPS = [
     "django_filters",
     "django_countries",
     "phonenumber_field",
+    "djoser",
+    "rest_framework_simplejwt",
 ]
 
 LOCAL_APPS = [
@@ -114,6 +117,61 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # SET CUSTOM USER MODEL
 AUTH_USER_MODEL = "users.User"
+
+
+# REST FRAMEWORK CONFIG
+REST_FRAMEWORK = {
+    "DEFAUL_AUTHENTICATION": (
+        "rest_framework_simple.authentication.JWTAuthentication",
+    )
+}
+
+# SIMPLE JWT CONFIG
+SIMPLE_JWT = {
+    "AUTH_HEADER_TYPE": (
+        "Bearer",
+        "JWT",
+    ),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=120),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'SIGNING_KEY': env('SIGNING_KEY'),
+    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+    'AUTH_TOKEN_CLASSES': ('rest_freamework_simplejwt.tokens.AccessToken',),
+}
+
+# DJOSER CONFIG
+DJOSER = {
+    # User Model Field, usado para fazer o Login
+    "LOGIN_FIELD": 'email',
+    # Adiciona a Verificação de password, por Confirmação de Digitação
+    'USER_CREATE_PASSWORD_RETYPE': True,
+    # Manda confirmação para a mudança do email
+    'USERNAME_CHANGED_EMAIL_CONFIRMATION': True,
+    # Manda confirmação para a mudança da Senha
+    'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
+    # Manda a Confirmação de email no Registro
+    'SEND_CONFIRMATION_EMAIL': True,
+    # seta o Endpoint para fazer a Troca de Senha
+    'PASSWORD_RESET_CONFIRM_URL': "password/reset/confirm/{uid}/{token}",
+    # Adiciona a Verificação de password, por Confirmação de Digitação
+    'SET_PASSWORD_RETYPE': True,
+    # Adiciona a Verificação de password, por Confirmação de Digitação, quando mudar de senha
+    'PASSWORD_RESET_CONFIRM_RETYPE': True,
+    # Manda confirmação para a mudança da username
+    'USERNAME_RESET_CONFIRM_URL': 'email/reset/confirm/{uid}/{token}',
+    # Url para ativação da Conta do Usuário
+    'ACTIVATION_URL': 'activate/{uid}/{token}',
+    # Envia o email de ativação para o usuário, após criar a conta
+    'SEND_ACTIVATION_EMAIL': True,
+    # Seta as classes dos serializers
+    'SERIALIZERS': {
+        'user_create': 'apps.users.serializers.CreateUserSerializer',
+        'user': 'apps.users.serializers.UserSerializer',
+        'current_user': 'apps.users.serializers.CurrentUserSerializer',
+        'user_delete': 'djoser.serializers.UserDeleteSerializer',
+    },
+}
+
 
 # Logs
 logger = logging.getLogger(__name__)
