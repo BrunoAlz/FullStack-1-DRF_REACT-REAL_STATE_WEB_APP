@@ -123,7 +123,7 @@ def update_property_api_view(request, slug):
 def create_property_api_view(request):
     user = request.user
     data = request.data
-    data["user"] = request.user.user_id
+    data["user"] = request.user.pkid
     serializer = PropertyCreateSerializer(data=data)
 
     if serializer.is_valid():

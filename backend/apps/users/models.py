@@ -9,7 +9,7 @@ import uuid
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    user_id = models.BigAutoField(
+    pkid = models.BigAutoField(
         primary_key=True,
         editable=False,
         unique=True
