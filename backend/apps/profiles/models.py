@@ -10,73 +10,73 @@ User = get_user_model()
 
 
 class Gender(models.TextChoices):
-    MALE = "Male", _("Male")
-    FEMALE = "Female", _("Female")
-    OTHER = "Other", _("Other")
+    MALE = 'Male', _('Male')
+    FEMALE = 'Female', _('Female')
+    OTHER = 'Other', _('Other')
 
 
 class Profile(TimeStampedUUIDModel):
     user = models.OneToOneField(
         User,
-        related_name="profile",
+        related_name='profile',
         on_delete=models.CASCADE
     )
 
     phone_number = PhoneNumberField(
-        verbose_name=_("Phone number"),
+        verbose_name=_('Phone number'),
         max_length=30,
-        default="+5511940547807"
+        default='+5511940547807'
     )
 
     about_me = models.TextField(
-        verbose_name=_("Aboute me")
+        verbose_name=_('Aboute me')
     )
 
     profile_photo = models.ImageField(
         verbose_name=_('Profile Photo'),
-        default="/profile_default.png"
+        default='/profile_default.png'
     )
 
     gender = models.CharField(
-        verbose_name=_("Gender"),
+        verbose_name=_('Gender'),
         choices=Gender.choices,
         default=Gender.OTHER,
         max_length=20
     )
 
     country = CountryField(
-        verbose_name=_("Country"),
-        default="BR",
+        verbose_name=_('Country'),
+        default='BR',
         null=False, blank=False
     )
 
     city = models.CharField(
-        verbose_name=_("City"),
+        verbose_name=_('City'),
         max_length=180,
         default='São Paulo',
         null=False, blank=False
     )
 
     is_buyer = models.BooleanField(
-        verbose_name=_("Buyer"),
+        verbose_name=_('Buyer'),
         default=False,
-        help_text=_("Are you looking to Buy a Property?"),
+        help_text=_('Are you looking to Buy a Property?'),
     )
 
     is_seller = models.BooleanField(
-        verbose_name=_("Seller"),
+        verbose_name=_('Seller'),
         default=False,
-        help_text=_("Are you looking to sell a property?"),
+        help_text=_('Are you looking to sell a property?'),
     )
 
     is_agent = models.BooleanField(
-        verbose_name=_("Agent"),
+        verbose_name=_('Agent'),
         default=False,
-        help_text=_("Are you an agent?")
+        help_text=_('Are you an agent?')
     )
 
     top_agent = models.BooleanField(
-        verbose_name=_("Top Agent"),
+        verbose_name=_('Top Agent'),
         default=False
     )
 
@@ -86,8 +86,8 @@ class Profile(TimeStampedUUIDModel):
     )
 
     num_reviews = models.IntegerField(
-        verbose_name=_("Number of Reviews"), default=0, null=True, blank=True
+        verbose_name=_('Number of Reviews'), default=0, null=True, blank=True
     )
 
     def __str__(self):
-        return f"{self.user.username}'s profile"
+        return f'{self.user.username} profile'

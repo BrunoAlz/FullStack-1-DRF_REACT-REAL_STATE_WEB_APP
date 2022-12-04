@@ -36,16 +36,16 @@ class User(AbstractBaseUser, PermissionsMixin):
         max_length=100
     )
     email = models.EmailField(
-        verbose_name=_("Email Address"),
+        verbose_name=_('Email Address'),
         unique=True
     )
 
     is_staff = models.BooleanField(
-        verbose_name=_("Is Staff"),
+        verbose_name=_('Is Staff'),
         default=False
     )
     is_active = models.BooleanField(
-        verbose_name=_("Is Active"),
+        verbose_name=_('Is Active'),
         default=True
     )
 
@@ -53,14 +53,14 @@ class User(AbstractBaseUser, PermissionsMixin):
         default=timezone.now
     )
 
-    USERNAME_FIELD = "email"
+    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
 
     objects = CustomUserManager()
 
     class Meta:
-        verbose_name = _("User")
-        verbose_name_plural = _("Users")
+        verbose_name = _('User')
+        verbose_name_plural = _('Users')
 
     def __str__(self) -> str:
         return self.username
