@@ -16,20 +16,20 @@ from .serializers import ProfileSerializer, UpdateProfileSerializer
     @api_view("GET")
     @permission_classes((permissions.IsAuthenticated))
     def get_all_agents(request):
-        agents = Profile.objects.filter(is_agente=True)
+        agents = Profile.objects.filter(is_agent=True)
         serializer=ProfileSerializer(agents, many=True)
         name_spaced_response={'agents': serializer.data}
         return Response(name_spaced_response, status.HTTP_200_ok)
 """
 
 
-class AgenteListeAPIView(generics.ListAPIView):
+class AgenteListAPIView(generics.ListAPIView):
     permission_classes = (permissions.IsAuthenticated)
-    queryset = Profile.objects.filter(is_agente=True)
+    queryset = Profile.objects.filter(is_agent=True)
     serializer_class = ProfileSerializer
 
 
-class TopAgenteListeAPIView(generics.ListAPIView):
+class TopAgenteListAPIView(generics.ListAPIView):
     permission_classes = (permissions.IsAuthenticated)
     queryset = Profile.objects.filter(top_agent=True)
     serializer_class = ProfileSerializer
