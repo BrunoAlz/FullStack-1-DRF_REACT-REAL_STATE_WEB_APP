@@ -1,15 +1,11 @@
-FROM python:3.10.7-slim-buster
+FROM python:3.10.0-slim-buster
 
-# Seta o APP na variável APP_HOME
 ENV APP_HOME=/app
-# Cria o Diretório
 RUN mkdir $APP_HOME
-# Cria o Diretório
 RUN mkdir $APP_HOME/staticfiles
-# Seta o /app como o diretório principal
+
 WORKDIR $APP_HOME
 
-# Metadados da Imagem
 LABEL maintainer='BrunoAlz'
 LABEL email='bruno6821@gmail.com'
 LABEL github='https://github/BrunoAlz'
@@ -18,7 +14,6 @@ ENV PYTHONDONTWRITEBYTECODE 1
 
 ENV PYTHONUNBUFFERED 1
 
-# Instala as dependências no Container
 RUN apt-get update \
   && apt-get install -y build-essential \
   && apt-get install -y libpq-dev \

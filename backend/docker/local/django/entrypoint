@@ -12,11 +12,11 @@ import sys
 import psycopg2
 try:
     psycopg2.connect(
-        dbname="${POSTGRES_DB}",
-        user="${POSTGRES_USER}",
-        password="${POSTGRES_PASSWORD}",
-        host="${PG_HOST}",
-        port="${PG_PORT}",
+        dbname="${DB_NAME}",
+        user="${DB_USERNAME}",
+        password="${DB_PASSWORD}",
+        host="${DB_HOST}",
+        port="${DB_PORT}",
     )
 except psycopg2.OperationalError:
     sys.exit(-1)
