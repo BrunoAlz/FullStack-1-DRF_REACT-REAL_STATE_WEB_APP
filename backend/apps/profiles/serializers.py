@@ -7,33 +7,13 @@ from .models import Profile
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    username = serializers.CharField(
-        source="user.username"
-    )
-
-    first_name = serializers.CharField(
-        source="user.first_name"
-    )
-
-    last_name = serializers.CharField(
-        source="user.last_name"
-    )
-
-    email = serializers.EmailField(
-        source="user.email"
-    )
-
-    full_name = serializers.SerializerMethodField(
-        read_only=True
-    )
-
-    country = CountryField(
-        name_only=True
-    )
-
-    reviews = serializers.SerializerMethodField(
-        read_only=True
-    )
+    username = serializers.CharField(source="user.username")
+    first_name = serializers.CharField(source="user.first_name")
+    last_name = serializers.CharField(source="user.last_name")
+    email = serializers.EmailField(source="user.email")
+    full_name = serializers.SerializerMethodField(read_only=True)
+    country = CountryField(name_only=True)
+    reviews = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Profile
@@ -47,7 +27,6 @@ class ProfileSerializer(serializers.ModelSerializer):
             "phone_number",
             "profile_photo",
             "about_me",
-            "license",
             "gender",
             "country",
             "city",
@@ -85,7 +64,6 @@ class UpdateProfileSerializer(serializers.ModelSerializer):
             "phone_number",
             "profile_photo",
             "about_me",
-            "license",
             "gender",
             "country",
             "city",

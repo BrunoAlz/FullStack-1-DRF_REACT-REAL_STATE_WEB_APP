@@ -121,20 +121,19 @@ AUTH_USER_MODEL = 'users.User'
 
 # REST FRAMEWORK CONFIG
 REST_FRAMEWORK = {
-    'DEFAUL_AUTHENTICATION': (
-        'rest_framework_simple.authentication.JWTAuthentication',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
 
 # SIMPLE JWT CONFIG
 SIMPLE_JWT = {
-    'AUTH_HEADER_TYPES': ('Bearer', 'JWT'),
+    'AUTH_HEADER_TYPES': ('Bearer', 'JWT',),
     'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=120),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'SIGNING_KEY': env('SIGNING_KEY'),
-    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
-    'AUTH_TOKEN_CLASSES': ('rest_freamework_simplejwt.tokens.AccessToken',),
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
 }
 
 # DJOSER CONFIG
