@@ -34,4 +34,92 @@
 
 <hr>
 
-## EM DESENVOLVIMENTO...
+## BACKEND / API EM DESENVOLVIMENTO...
+
+### API - Endipoints
+#### Usuários
+
+<ol>
+  <h3>
+  <li>Registrar Usuário: </li>
+    <ol>
+      <li>Requisição: <b>POST</b></li>
+      <li>Endpoint: <b>localhost:8000/api/v1/auth/users/</b></li>
+      <li>JSON BODY: <b><code>{<br>
+      "username": "teste1",<br>
+      "first_name": "teste_fn",<br>
+      "last_name":"teste_ln",<br>
+      "email": "teste1@gmail.com",<br>
+      "password": "test123@",<br>
+      "re_password": "teste123@"<br>
+   }</code></b>
+   </li>
+    </ol>
+  </li>
+  </h3>
+  <br>
+  <h3>
+  <li>Ativar Cadastro do usuário via Email: </li>
+    <ol>
+      <li>Requisição: <b>POST</b></li>
+      <li>Endpoint: <b>localhost:8000/api/v1/auth/users/activation/</b></li>
+      <li>JSON BODY: <b><code>{<br>
+      "uid": "Mw",<br>
+      "token": "bfvra6-2651cf5be01c7a1b06e507a33c7c58bb"<br>
+   }</code></b>
+   </li>
+    </ol>
+  </li>
+  </h3>
+  <br>
+  <h3>
+  <li>Gerar JTW Token para o Login:</li>
+    <ol>
+      <li>Requisição: <b>POST</b></li>
+      <li>Endpoint: <b>localhost:8000/api/v1/auth/jwt/create/</b></li>
+      <li>JSON BODY: <b><code>{<br>
+      "email": "teste1@gmail.com",<br>
+      "password": "test123@",<br>
+   }</code></b>
+      <li>Response: <b><code>{<br>
+      "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY3MDIwOTg2OSwianRpIjoiNTZkYjhmMTZlNTFjNGI2MjgzYzBlN2U1NzExODNlYmQiLCJ1c2VyX2lkIjoiMzc2YWE4ZjAtYThiOS00N2FmLTlkMTYtZjRhZDI0ZjcyMmUyIn0.BqW_65HCfzdRTS8YMBqRXDk1fEhHduzbY1W07NMPqbg",
+      <br>
+      "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcwMTMwNjY5LCJqdGkiOiJhYTlmZTcyZThhMTA0MWNiOTdlYzQ1MzhmY2E5MDcwZCIsInVzZXJfaWQiOiIzNzZhYThmMC1hOGI5LTQ3YWYtOWQxNi1mNGFkMjRmNzIyZTIifQ.BDNSKxwMG0FVYX0bupN45QikAt25QxMnFppFEfPAjow"<br>
+      }
+      </b></code></li>
+   </li>
+    </ol>
+  </li>
+  </h3>
+  <br>
+  <h3>
+  <li>Requisitar Reset de Senha: </li>
+    <ol>
+      <li>Requisição: <b>POST</b></li>
+      <li>Endpoint: <b>localhost:8000/api/v1/auth/users/reset_password/</b></li>
+      <li>JSON BODY: <b><code>{<br>
+      "email": "teste1@gmail.com",<br>
+   }</code></b>
+   </li>
+    </ol>
+  </li>
+  </h3>
+  <br>
+  <h3>
+  <li>Confirmar Reset de Senha: </li>
+    <ol>
+      <li>Requisição: <b>POST</b></li>
+      <li>Endpoint: <b>localhost:8000/api/v1/auth/users/reset_password_confirm/</b></li>
+      <li>JSON BODY: <b><code>{<br>
+      "new_password": "pass123@",<br>
+      "re_new_password": "pass123@",<br>
+      "uid": "Mw",<br>
+      "token": "bfvs38-9ed501f77c012e513d20d7a351d7b181"<br>
+   }</code></b>
+   </li>
+    </ol>
+  </li>
+  </h3>
+  <br>         
+</ol>
+
