@@ -28,7 +28,7 @@ const App = () => {
             <Route path="/properties" element={<PropertiesPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/activate" element={<Activate />} />
+            <Route path="/activate/:uid/:token" element={<Activate />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <ToastContainer theme="dark" />

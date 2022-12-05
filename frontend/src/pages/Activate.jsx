@@ -38,7 +38,7 @@ const Activate = () => {
       toast.error(message);
     }
     if (isSuccess) {
-      navigate("/");
+      navigate("/login");
     }
 
     dispatch(reset());
@@ -51,7 +51,7 @@ const Activate = () => {
     };
 
     dispatch(activate(userData));
-    toast.success(message);
+    toast.success("Sua conta foi ativada, agora você poderá fazer o Login!");
   };
 
   return (

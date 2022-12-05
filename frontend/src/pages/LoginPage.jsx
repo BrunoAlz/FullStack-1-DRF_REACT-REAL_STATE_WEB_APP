@@ -36,10 +36,10 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (isError) {
-      toast.error(message);
     }
-    if (isSuccess || user) {
+    if (isSuccess) {
       navigate("/");
+      toast.success('Bem Vindo!');
     }
 
     dispatch(reset());

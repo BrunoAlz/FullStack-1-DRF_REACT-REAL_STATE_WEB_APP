@@ -25,11 +25,11 @@ import { register, reset } from "../slices/auth/authSlice";
 
 const RegisterPage = () => {
   const [username, setUsername] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
+  const [first_name, setFirstname] = useState("");
+  const [last_name, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [repassword, setRepassword] = useState("");
+  const [re_password, setRepassword] = useState("");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ const RegisterPage = () => {
     if (isError) {
       toast.error(message);
     }
-    if (isSuccess || user) {
+    if (isSuccess) {
       navigate("/");
       toast.success(
         "Um Email de Ativação foi enviado para o Seu E-mail. Aguardando Ativação..."
@@ -55,15 +55,16 @@ const RegisterPage = () => {
   const handlerSubmit = (e) => {
     e.preventDefault();
 
-    if (password !== repassword) {
+    if (password !== re_password) {
       toast.error("As senhas devem ser iguais");
     } else {
       const userData = {
         username,
-        firstname,
-        lastname,
+        first_name,
+        last_name,
         email,
         password,
+        re_password,
       };
       dispatch(register(userData));
     }
@@ -96,21 +97,21 @@ const RegisterPage = () => {
                   onChange={(e) => setUsername(e.target.value)}
                 />
               </Form.Group>
-              <Form.Group controlId="firstname">
+              <Form.Group controlId="first_name">
                 <Form.Label>Primeiro nome:</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Primeiro Nome"
-                  value={firstname}
+                  value={first_name}
                   onChange={(e) => setFirstname(e.target.value)}
                 />
               </Form.Group>
-              <Form.Group controlId="lastname">
+              <Form.Group controlId="last_name">
                 <Form.Label>Sobrenome:</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Primeiro Nome"
-                  value={lastname}
+                  value={last_name}
                   onChange={(e) => setLastname(e.target.value)}
                 />
               </Form.Group>
@@ -132,12 +133,12 @@ const RegisterPage = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </Form.Group>
-              <Form.Group controlId="repassword">
+              <Form.Group controlId="re_password">
                 <Form.Label>Confirme a senha:</Form.Label>
                 <Form.Control
-                  type="repassword"
+                  type="password"
                   placeholder="Confirmação de Senha"
-                  value={repassword}
+                  value={re_password}
                   onChange={(e) => setRepassword(e.target.value)}
                 />
               </Form.Group>
