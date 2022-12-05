@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 // COMPONENTS
 import Spinner from '../components/Spinner';
 import Property from '../components/Property';
+import Title from '../components/Title'
 
 // TOASTS
 import { toast } from 'react-toastify';
@@ -37,6 +38,7 @@ const PropertiesPage = () => {
 
   return (
     <>
+    <Title title="Catalogo" />
       <Container>
         <Row>
           <Col className="mg-top text-center">
