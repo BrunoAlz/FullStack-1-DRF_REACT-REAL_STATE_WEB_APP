@@ -28,6 +28,8 @@ services:
     volumes:
       - ../frontend:/app
       - /app/node_modules
+    environment:
+      - WATCHPACK_POLLING=true
     networks:
       - estate-react
 
