@@ -55,3 +55,22 @@ export const logout = createAsyncThunk(
     return authService.logout();
   }
 );
+
+export const activate = createAsyncThunk(
+  "auth/activate",
+  async (userData, thunkAPI) => {
+
+    try {
+      return await authService.activate(userData)
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+);
