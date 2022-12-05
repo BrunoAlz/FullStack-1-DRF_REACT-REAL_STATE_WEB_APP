@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 const Property = ({ property }) => {
 
   function numberWithCommas(number) {
-    return number.toString().replace(/\(?=(\d{3})+(?!\d))/g, ",");
+		return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
   return (
