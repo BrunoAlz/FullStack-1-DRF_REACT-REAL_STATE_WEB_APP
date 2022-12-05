@@ -1,4 +1,4 @@
-import { Col, Container, Row } from 'react-boostrap'
+import { Col, Container, Row } from 'react-bootstrap'
 
 const PropertiesPage = () => {
   return (
