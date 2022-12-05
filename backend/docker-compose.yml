@@ -20,6 +20,17 @@ services:
     networks:
       - estate-react
 
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: ../frontend/docker/local/Dockerfile
+    restart: on-failure
+    volumes:
+      - ../frontend:/app
+      - /app/node_modules
+    networks:
+      - estate-react
+
   postgres-db:
     image: postgres:15-alpine
     ports:
