@@ -27,6 +27,7 @@ RUN pip3 install --upgrade pip
 COPY ./requirements.txt /app/requirements.txt 
 
 RUN pip3 install -r requirements.txt
+RUN pip3 freeze > requirements.txt
 
 COPY ./docker/local/django/entrypoint /entrypoint
 RUN sed -i 's/\r$//g' /entrypoint
