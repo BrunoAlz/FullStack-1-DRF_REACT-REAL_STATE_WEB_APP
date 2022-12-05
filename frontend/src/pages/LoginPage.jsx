@@ -48,14 +48,6 @@ const LoginPage = () => {
   const handlerSubmit = (e) => {
     e.preventDefault();
 
-    if (!email) {
-      toast.error("Você deve inserir um E-mail.");
-    }
-
-    if (!password) {
-      toast.error("Você deve inserir uma Senha.");
-    }
-
     const userData = {
       email,
       password,

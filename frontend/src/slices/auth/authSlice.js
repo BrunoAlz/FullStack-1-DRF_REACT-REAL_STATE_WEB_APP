@@ -35,12 +35,18 @@ export const login = createAsyncThunk(
     try {
       return await authService.login(userData);
     } catch (error) {
-      const message =
+      let message =
         (error.response &&
           error.response.data &&
           error.response.data.message) ||
         error.message ||
         error.toString();
+
+      if (message.includes("401")) {
+        message = "E-mail ou Senha Inválidos.";
+      } else if (message.includes("400")) {
+        message = "Você deve preencher os dados do Login";
+      }
 
       return thunkAPI.rejectWithValue(message);
     }
