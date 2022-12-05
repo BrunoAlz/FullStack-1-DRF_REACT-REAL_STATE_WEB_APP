@@ -118,15 +118,17 @@ export const authSlice = createSlice({
         state.message = action.payload;
         state.user = null;
       })
-      .addCase(logout.pending, (state) => {
+      .addCase(logout.fulfilled, (state, action) => {
+        state.user = null;
+      })
+      .addCase(activate.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(logout.fulfilled, (state, action) => {
+      .addCase(activate.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.user = action.payload;
       })
-      .addCase(logout.rejected, (state, action) => {
+      .addCase(activate.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
@@ -134,3 +136,6 @@ export const authSlice = createSlice({
       })
   },
 });
+
+export const { reset } = authSlice.actions;
+export default authSlice.reducer;
