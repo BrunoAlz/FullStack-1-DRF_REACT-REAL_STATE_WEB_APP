@@ -82,7 +82,7 @@ const LoginPage = () => {
         <Row className="mt-3">
           <Col className="justify-content-center">
             <Form onSubmit={handlerSubmit}>
-              <Form.Group controllId="email">
+              <Form.Group controlId="email">
                 <Form.Label>E-mail</Form.Label>
                 <Form.Control
                   type="email"
@@ -91,7 +91,7 @@ const LoginPage = () => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </Form.Group>
-              <Form.Group controllId="password">
+              <Form.Group controlId="password">
                 <Form.Label>Senha</Form.Label>
                 <Form.Control
                   type="password"
@@ -110,7 +110,7 @@ const LoginPage = () => {
         <Row className="py-3">
           <Col>
             Ainda não tem cadastro?
-            <Link to="/register">Registrar!</Link>
+            <Link to="/register"> Registrar!</Link>
           </Col>
         </Row>
       </Container>
