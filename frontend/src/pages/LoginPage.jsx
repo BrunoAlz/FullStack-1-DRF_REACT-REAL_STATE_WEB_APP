@@ -1,68 +1,67 @@
 // HOOKS
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 
 // REACT BOOTSTRAP
-import { Col, Container, Row, Form, Button } from 'react-bootstrap'
+import { Col, Container, Row, Form, Button } from "react-bootstrap";
 
 // ICONS
-import { FaSignInAlt } from 'react-icons/fa';
+import { FaSignInAlt } from "react-icons/fa";
 
 // REDUX
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 
 // ROUTERS
-import { Link, useNavigate } from 'react-router-bootstrap';
+import { Link, useNavigate } from "react-router-dom";
 
 // TOASTS
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 // COMPONENTS
-import Spinner from '../components/Spinner';
-import Title from '../components/Title';
+import Spinner from "../components/Spinner";
+import Title from "../components/Title";
 
 // REDUCERS
-import { login, reset } from '../slices/auth/authSlice';
+import { login, reset } from "../slices/auth/authSlice";
 
 const LoginPage = () => {
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
 
   useEffect(() => {
     if (isError) {
-      toast.error(message)
+      toast.error(message);
     }
     if (isSuccess || user) {
-      navigate('/')
+      navigate("/");
     }
 
-
-    dispatch(reset())
-
-  }, [isError, isSuccess, message, user, navigate, dispatch])
+    dispatch(reset());
+  }, [isError, isSuccess, message, user, navigate, dispatch]);
 
   const handlerSubmit = (e) => {
     e.preventDefault();
 
     if (!email) {
-      toast.error("Você deve inserir um E-mail.")
+      toast.error("Você deve inserir um E-mail.");
     }
 
     if (!password) {
-      toast.error("Você deve inserir uma Senha.")
+      toast.error("Você deve inserir uma Senha.");
     }
 
     const userData = {
-      email, password
-    }
+      email,
+      password,
+    };
 
-    dispatch(login(userData))
-
+    dispatch(login(userData));
   };
 
   return (
@@ -85,14 +84,38 @@ const LoginPage = () => {
             <Form onSubmit={handlerSubmit}>
               <Form.Group controllId="email">
                 <Form.Label>E-mail</Form.Label>
-                <Form.Control type="email" placeholder="Insira seu E-mail" value={email} ></Form.Control>
+                <Form.Control
+                  type="email"
+                  placeholder="Insira seu E-mail"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </Form.Group>
+              <Form.Group controllId="password">
+                <Form.Label>Senha</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Insira sua Senha"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </Form.Group>
+              <Button type="submit" variant="primary" className="mt-3">
+                Entrar
+              </Button>
             </Form>
+          </Col>
+        </Row>
+
+        <Row className="py-3">
+          <Col>
+            Ainda não tem cadastro?
+            <Link to="/register">Registrar!</Link>
           </Col>
         </Row>
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;
