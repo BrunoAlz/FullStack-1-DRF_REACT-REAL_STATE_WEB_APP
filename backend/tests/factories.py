@@ -12,11 +12,10 @@ class ProfileFactory(factory.django.DjangoModelFactory):
     user = factory.SubFactory("tests.factories.UserFactory")
     phone_number = factory.LazyAttribute(lambda x: faker.phone_number())
     about_me = factory.LazyAttribute(lambda x: faker.sentence(nb_words=5))
-    license = factory.LazyAttribute(lambda x: faker.text(max_nb_chars=6))
     profile_photo = factory.LazyAttribute(
         lambda x: faker.file_extension(category="image")
     )
-    gender = factory.LazyAttribute(lambda x: f"other")
+    gender = factory.LazyAttribute(lambda x: "other")
     country = factory.LazyAttribute(lambda x: faker.country_code())
     city = factory.LazyAttribute(lambda x: faker.city())
     is_buyer = False
