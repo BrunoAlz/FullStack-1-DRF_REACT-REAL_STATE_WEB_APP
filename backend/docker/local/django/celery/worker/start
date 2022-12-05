@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -o errexit
+
+set -o nounset
+
+watchmedo auto-restart -d configurations/ -p "*.py" -- celery -A configurations worker --loglevel=info

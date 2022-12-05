@@ -31,7 +31,7 @@ def test_super_user_email_is_normalized(super_user):
 
 
 def test_super_user_is_not_staff(user_factory):
-    """Testa se uma exceção é levantada quando o 
+    """Testa se uma exceção é levantada quando o
     Superuser não tem status de Staff"""
     with pytest.raises(ValueError) as err:
         user_factory.create(is_superuser=True, is_staff=False)
@@ -39,7 +39,7 @@ def test_super_user_is_not_staff(user_factory):
 
 
 def test_super_user_is_not_superuser(user_factory):
-    """Testa se uma exceção é levantada quando o 
+    """Testa se uma exceção é levantada quando o
     Superuser não tem status de superuser"""
     with pytest.raises(ValueError) as err:
         user_factory.create(is_superuser=False, is_staff=True)
@@ -51,7 +51,7 @@ def test_create_user_with_no_email(user_factory):
     é levantada uma exceção"""
     with pytest.raises(ValueError) as err:
         user_factory.create(email=None)
-    assert str(err.value) == "Base User Account: An email address is required"
+    assert str(err.value) == "An email address is required"
 
 
 def test_create_use_with_no_username(user_factory):
@@ -59,7 +59,7 @@ def test_create_use_with_no_username(user_factory):
     é levantada uma exceção"""
     with pytest.raises(ValueError) as err:
         user_factory.create(username=None)
-    assert str(err.value) == "Users must submit a username"
+    assert str(err.value) == "User must submit a username"
 
 
 def test_create_user_with_no_firstname(user_factory):
@@ -67,7 +67,7 @@ def test_create_user_with_no_firstname(user_factory):
     é levantada uma exceção"""
     with pytest.raises(ValueError) as err:
         user_factory.create(first_name=None)
-    assert str(err.value) == "Users must submit a first name"
+    assert str(err.value) == "User must submit a first name"
 
 
 def test_create_user_with_no_lastname(user_factory):
@@ -75,7 +75,7 @@ def test_create_user_with_no_lastname(user_factory):
     é levantada uma exceção"""
     with pytest.raises(ValueError) as err:
         user_factory.create(last_name=None)
-    assert str(err.value) == "Users must submit a last name"
+    assert str(err.value) == "User must submit a last name"
 
 
 def test_create_superuser_with_no_email(user_factory):
@@ -83,7 +83,7 @@ def test_create_superuser_with_no_email(user_factory):
     é levantada uma exceção"""
     with pytest.raises(ValueError) as err:
         user_factory.create(email=None, is_superuser=True, is_staff=True)
-    assert str(err.value) == "Admin Account: An email address is required"
+    assert str(err.value) == "An email address is required"
 
 
 def test_create_superuser_with_no_password(user_factory):
