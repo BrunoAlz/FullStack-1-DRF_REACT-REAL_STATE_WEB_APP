@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 // PAGES
 import HomePage from './pages/HomePage';
 import PropertiesPage from './pages/PropertiesPage';
+import NotFound from './components/NotFound';
 
 const App = () => {
   return (
@@ -22,8 +23,9 @@ const App = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/properties" element={<PropertiesPage />} />
+            <Route path='*' element={<NotFound />} />
           </Routes>
-          <ToastContainer />
+          <ToastContainer theme='dark'/>
         </main>
         <Footer />
       </Router>
