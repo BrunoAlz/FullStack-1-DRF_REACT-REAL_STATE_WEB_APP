@@ -1,36 +1,36 @@
 // ROUTER
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // TOASTS
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // COMPONENTES
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 // PAGES
-import HomePage from './pages/HomePage';
-import PropertiesPage from './pages/PropertiesPage';
-import NotFound from './components/NotFound';
+import HomePage from "./pages/HomePage";
+import PropertiesPage from "./pages/PropertiesPage";
+import NotFound from "./components/NotFound";
 
 const App = () => {
   return (
     <>
       <Router>
         <Header />
-        <main className='py-3'>
+        <main className="py-3">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/properties" element={<PropertiesPage />} />
-            <Route path='*' element={<NotFound />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
-          <ToastContainer theme='dark'/>
+          <ToastContainer theme="dark" />
         </main>
         <Footer />
       </Router>
     </>
   );
-}
+};
 
 export default App;

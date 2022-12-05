@@ -1,22 +1,24 @@
 // REACT BOOSTRAP
-import { Badge, Button, Card, Col, Row } from 'react-bootstrap';
+import { Badge, Button, Card, Col, Row } from "react-bootstrap";
 
 // ICONS
-import { FaBed, FaShower } from 'react-icons/fa';
-import { GiStairs } from 'react-icons/gi';
+import { FaBed, FaShower } from "react-icons/fa";
+import { GiStairs } from "react-icons/gi";
 
 // ROUTER
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Property = ({ property }) => {
-
   function numberWithCommas(number) {
-		return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  };
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
 
   return (
     <Card style={{ width: "18rem" }}>
-      <Badge bg="success" className="position-absolute top-0 start-100 translate-middle rounded-pill">
+      <Badge
+        bg="success"
+        className="position-absolute top-0 start-100 translate-middle rounded-pill"
+      >
         {property.advert_type}
       </Badge>
       <Link to={`/property${property.slug}`}>
@@ -26,12 +28,10 @@ const Property = ({ property }) => {
         ${numberWithCommas(Number(property.price))}
       </Card.Title>
       <Card.Body>
-        <Card.Title as='h1'>
+        <Card.Title as="h1">
           <strong>{property.title}</strong>
         </Card.Title>
-        <Card.Text>
-          {property.description.substring(0, 70)}...
-        </Card.Text>
+        <Card.Text>{property.description.substring(0, 70)}...</Card.Text>
         <hr />
         <Row>
           <Col className="d-flex justify-content-between">
@@ -52,7 +52,7 @@ const Property = ({ property }) => {
         </Link>
       </Card.Body>
     </Card>
-  )
-}
+  );
+};
 
-export default Property
+export default Property;

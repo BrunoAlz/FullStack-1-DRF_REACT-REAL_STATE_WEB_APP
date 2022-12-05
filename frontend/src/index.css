@@ -63,9 +63,11 @@ h1.notfound {
 .main-bg-image {
   background-attachment: scroll;
   background-color: initial;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3) 0,
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.3) 0,
       rgba(0, 0, 0, 0.7) 75%,
-      #000 100%),
+      #000 100%
+    ),
     url("../assets/images/buildings.jpg");
   background-position: center center;
   background-repeat: no-repeat no-repeat;
@@ -76,8 +78,8 @@ h1.notfound {
   box-sizing: border-box;
   color: #212529;
   font-family: Nunito, -apple-system, "system-ui", "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
   height: 100vh;
   letter-spacing: 1px;
   line-height: 24px;
@@ -91,8 +93,8 @@ div.text-center {
   box-sizing: border-box;
   color: #212529;
   font-family: Nunito, -apple-system, "system-ui", "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
   letter-spacing: 1px;
   line-height: 24px;
   text-align: center;
@@ -102,8 +104,10 @@ h1.mx-auto.my-0.text-uppercase {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   background-color: initial;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.9),
-      rgba(255, 255, 255, 0));
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0)
+  );
   box-sizing: border-box;
   color: #212529;
   font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -137,8 +141,8 @@ h2.text-white-50.mx-auto.mt-2.mb-5 {
   box-sizing: border-box;
   color: rgba(255, 255, 255, 0.5);
   font-family: Nunito, -apple-system, "system-ui", "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
   font-weight: 500;
   letter-spacing: 1px;

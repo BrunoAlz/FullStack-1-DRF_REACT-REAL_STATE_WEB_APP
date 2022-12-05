@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 const getProperties = async () => {
   const response = await axios.get("/api/v1/properties/list/");

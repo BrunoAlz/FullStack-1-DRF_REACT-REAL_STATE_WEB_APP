@@ -1,22 +1,21 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import authService from '../../services/auth/authService';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import authService from "../../services/auth/authService";
 
-const user = JSON.parse(localStorage.getItem('user'))
+const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
   user: user ? user : null,
   isError: false,
   isLoading: false,
   isSuccess: false,
-  message: '',
+  message: "",
 };
 
 export const register = createAsyncThunk(
   "auth/register",
   async (userData, thunkAPI) => {
-
     try {
-      return await authService.register(userData)
+      return await authService.register(userData);
     } catch (error) {
       const message =
         (error.response &&
@@ -25,7 +24,7 @@ export const register = createAsyncThunk(
         error.message ||
         error.toString();
 
-      return thunkAPI.rejectWithValue(message)
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
@@ -33,9 +32,8 @@ export const register = createAsyncThunk(
 export const login = createAsyncThunk(
   "auth/login",
   async (userData, thunkAPI) => {
-
     try {
-      return await authService.login(userData)
+      return await authService.login(userData);
     } catch (error) {
       const message =
         (error.response &&
@@ -44,24 +42,20 @@ export const login = createAsyncThunk(
         error.message ||
         error.toString();
 
-      return thunkAPI.rejectWithValue(message)
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
 
-export const logout = createAsyncThunk(
-  "auth/logout",
-  async () => {
-    return authService.logout();
-  }
-);
+export const logout = createAsyncThunk("auth/logout", async () => {
+  return authService.logout();
+});
 
 export const activate = createAsyncThunk(
   "auth/activate",
   async (userData, thunkAPI) => {
-
     try {
-      return await authService.activate(userData)
+      return await authService.activate(userData);
     } catch (error) {
       const message =
         (error.response &&
@@ -70,11 +64,10 @@ export const activate = createAsyncThunk(
         error.message ||
         error.toString();
 
-      return thunkAPI.rejectWithValue(message)
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
-
 
 export const authSlice = createSlice({
   name: "auth",
@@ -84,8 +77,8 @@ export const authSlice = createSlice({
       state.isLoading = false;
       state.isError = false;
       state.isSuccess = false;
-      state.message = '';
-      state.user = null
+      state.message = "";
+      state.user = null;
     },
   },
   extraReducers: (builder) => {
@@ -133,7 +126,7 @@ export const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.user = null;
-      })
+      });
   },
 });
 
