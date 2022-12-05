@@ -1,36 +1,36 @@
 // REACT BOOTSTRAP
-import { Col, Container, Row } from 'react-bootstrap'
+import { Col, Container, Row } from "react-bootstrap";
 
 // HOOKS
-import { useEffect } from 'react'
+import { useEffect } from "react";
 
 // REDUX
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from "react-redux";
 
 // COMPONENTS
-import Spinner from '../components/Spinner';
-import Property from '../components/Property';
-import Title from '../components/Title'
+import Spinner from "../components/Spinner";
+import Property from "../components/Property";
+import Title from "../components/Title";
 
 // TOASTS
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 // REDUCERS
-import { getProperties, reset } from '../slices/properties/PropertySlice';
+import { getProperties, reset } from "../slices/properties/PropertySlice";
 
 const PropertiesPage = () => {
-
-  const { properties, isLoading, isError, message } = useSelector((state) => state.properties);
+  const { properties, isLoading, isError, message } = useSelector(
+    (state) => state.properties
+  );
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (isError) {
-      toast.error(message, { icon: ":(" })
+      toast.error(message, { icon: ":(" });
     }
-    dispatch(getProperties())
+    dispatch(getProperties());
   }, [dispatch, isError, message]);
-
 
   if (isLoading) {
     return <Spinner />;
@@ -38,7 +38,7 @@ const PropertiesPage = () => {
 
   return (
     <>
-    <Title title="Catalogo" />
+      <Title title="Catalogo" />
       <Container>
         <Row>
           <Col className="mg-top text-center">
@@ -48,20 +48,18 @@ const PropertiesPage = () => {
           {
             <>
               <Row className="mt-3">
-                {
-                  properties.map((property) => (
-                    <Col key={property.id} sm={12} md={6} lg={4} xl={3}>
-                      <Property property={property} />
-                    </Col>
-                  ))
-                }
+                {properties.map((property) => (
+                  <Col key={property.id} sm={12} md={6} lg={4} xl={3}>
+                    <Property property={property} />
+                  </Col>
+                ))}
               </Row>
             </>
           }
         </Row>
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default PropertiesPage
+export default PropertiesPage;
