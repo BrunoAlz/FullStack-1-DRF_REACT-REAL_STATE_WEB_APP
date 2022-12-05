@@ -9,10 +9,10 @@ const HomePage = () => {
           <div className="d-flex justify-content-center">
             <div className="text-center">
               <h1 className="mx-auto my-0 text-uppercase">
-                Real Estate
+                Moderna Houses
               </h1>
               <h2 className="text-white-50 mx-auto mt-2 mb-5">
-                Vendendo, alugando ou comprando sua Moradia dos sonhos!
+                Vendendo, alugando ou comprando sua casa dos sonhos!
               </h2>
               <LinkContainer to='/properties'>
                 <Button variant='primary'>Venha conhecer!</Button>
