@@ -23,7 +23,8 @@ services:
   frontend:
     build:
       context: ../frontend
-      dockerfile: ../frontend/docker/local/Dockerfile
+      # dockerfile: ../frontend/docker/local/Dockerfile
+      dockerfile: Dockerfile.dev
     restart: on-failure
     volumes:
       - ../frontend:/app
