@@ -40,7 +40,6 @@
 #### Usuários
 
 <ol>
-  <h3>
   <li>Registrar Usuário: </li>
     <ol>
       <li>Requisição: <b>POST</b></li>
@@ -119,7 +118,6 @@
    </li>
     </ol>
   </li>
-  </h3>
   <br>         
 </ol>
 
